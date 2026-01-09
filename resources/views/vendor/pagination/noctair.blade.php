@@ -1,53 +1,58 @@
 @if ($paginator->hasPages())
-  <nav role="navigation" aria-label="Pagination Navigation" class="inline-flex items-center gap-2">
-
-    {{-- Previous --}}
-    @if ($paginator->onFirstPage())
-      <span class="h-10 w-10 grid place-items-center rounded-lg bg-white/10 text-white/30 select-none">
-        ‹
-      </span>
-    @else
-      <a href="{{ $paginator->previousPageUrl() }}"
-         class="h-10 w-10 grid place-items-center rounded-lg bg-white/10 text-white/80 hover:bg-white/15 transition">
-        ‹
-      </a>
-    @endif
-
-    {{-- Pages --}}
-    @foreach ($elements as $element)
-      @if (is_string($element))
-        <span class="h-10 px-3 grid place-items-center rounded-lg bg-white/10 text-white/60 select-none">
-          {{ $element }}
-        </span>
-      @endif
-
-      @if (is_array($element))
-        @foreach ($element as $page => $url)
-          @if ($page == $paginator->currentPage())
-            <span class="h-10 w-10 grid place-items-center rounded-lg bg-blue-600 text-white font-semibold select-none">
-              {{ $page }}
+    <nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-center gap-2">
+        {{-- Previous Page Link --}}
+        @if ($paginator->onFirstPage())
+            <span class="px-4 py-2 text-sm font-medium text-white/30 bg-white/5 border border-white/10 rounded-lg cursor-not-allowed">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
             </span>
-          @else
-            <a href="{{ $url }}"
-               class="h-10 w-10 grid place-items-center rounded-lg bg-white/10 text-white/80 hover:bg-white/15 transition">
-              {{ $page }}
+        @else
+            <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="px-4 py-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Anterior
             </a>
-          @endif
+        @endif
+
+        {{-- Pagination Elements --}}
+        @foreach ($elements as $element)
+            {{-- "Three Dots" Separator --}}
+            @if (is_string($element))
+                <span class="px-4 py-2 text-sm font-medium text-white/50">{{ $element }}</span>
+            @endif
+
+            {{-- Array Of Links --}}
+            @if (is_array($element))
+                @foreach ($element as $page => $url)
+                    @if ($page == $paginator->currentPage())
+                        <span class="px-4 py-2 text-sm font-bold text-white bg-gradient-to-r from-sky-500 to-violet-500 rounded-lg">
+                            {{ $page }}
+                        </span>
+                    @else
+                        <a href="{{ $url }}" class="px-4 py-2 text-sm font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-lg transition">
+                            {{ $page }}
+                        </a>
+                    @endif
+                @endforeach
+            @endif
         @endforeach
-      @endif
-    @endforeach
 
-    {{-- Next --}}
-    @if ($paginator->hasMorePages())
-      <a href="{{ $paginator->nextPageUrl() }}"
-         class="h-10 w-10 grid place-items-center rounded-lg bg-white/10 text-white/80 hover:bg-white/15 transition">
-        ›
-      </a>
-    @else
-      <span class="h-10 w-10 grid place-items-center rounded-lg bg-white/10 text-white/30 select-none">
-        ›
-      </span>
-    @endif
-
-  </nav>
+        {{-- Next Page Link --}}
+        @if ($paginator->hasMorePages())
+            <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="px-4 py-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition flex items-center gap-2">
+                Siguiente
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        @else
+            <span class="px-4 py-2 text-sm font-medium text-white/30 bg-white/5 border border-white/10 rounded-lg cursor-not-allowed">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </span>
+        @endif
+    </nav>
 @endif

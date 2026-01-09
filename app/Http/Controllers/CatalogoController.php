@@ -10,34 +10,197 @@ class CatalogoController extends Controller
 {
     private const PER_PAGE = 9;
 
+    // ACTUALIZADO: Ahora cada producto tiene un array de imágenes
     private const PRODUCTOS = [
-        ['nombre' => '9PM', 'marca' => 'Afnan', 'precio' => 179, 'img' => '9pm.jpg'],
-        ['nombre' => '9PM Rebel', 'marca' => 'Afnan', 'precio' => 179, 'img' => '9pmr.jpg'],
-        ['nombre' => '9AM', 'marca' => 'Afnan', 'precio' => 179, 'img' => '9am.jpg'],
-        ['nombre' => 'Khamrah Qahwa', 'marca' => 'Lattafa', 'precio' => 179, 'img' => 'khamrahq.jpg'],
-        ['nombre' => 'Khamrah Dukhan', 'marca' => 'Lattafa', 'precio' => 199, 'img' => 'khamrahd.jpg'],
-        ['nombre' => 'Khamrah', 'marca' => 'Lattafa', 'precio' => 179, 'img' => 'khamrah.jpg'],
-        ['nombre' => 'Ishq Al Shuyukh Gold', 'marca' => 'Lattafa', 'precio' => 219, 'img' => 'ishqg.jpg'],
-        ['nombre' => 'Ishq Al Shuyukh Silver', 'marca' => 'Lattafa', 'precio' => 219, 'img' => 'ishqs.jpg'],
-        ['nombre' => 'Shaheen Silver', 'marca' => 'Lattafa', 'precio' => 219, 'img' => 'shaheens.jpg'],
-        ['nombre' => 'Badee Al Oud Sublime', 'marca' => 'Lattafa', 'precio' => 179, 'img' => 'badees.jpg'],
-        ['nombre' => 'Badee Al Oud Honor & Glory', 'marca' => 'Lattafa', 'precio' => 179, 'img' => 'badeehg.jpg'],
-        ['nombre' => 'Badee Al Oud Mood Amor', 'marca' => 'Lattafa', 'precio' => 179, 'img' => 'badeema.jpg'],
-        ['nombre' => 'Fakhar Rose Gold', 'marca' => 'Lattafa', 'precio' => 199, 'img' => 'fakharr.jpg'],
-        ['nombre' => 'Fakhar Gold', 'marca' => 'Lattafa', 'precio' => 199, 'img' => 'fakharg.jpg'],
-        ['nombre' => 'Yara Candy', 'marca' => 'Lattafa', 'precio' => 179, 'img' => 'yarac.jpg'],
-        ['nombre' => 'Eclaire Pistache', 'marca' => 'Lattafa', 'precio' => 189, 'img' => 'eclairep.jpg'],
-        ['nombre' => 'Eclaire Banoffi', 'marca' => 'Lattafa', 'precio' => 189, 'img' => 'eclaireb.jpg'],
-        ['nombre' => 'Eclaire', 'marca' => 'Lattafa', 'precio' => 199, 'img' => 'eclaire.jpg'],
-        ['nombre' => 'Asad Bourbon', 'marca' => 'Lattafa', 'precio' => 199, 'img' => 'asadb.jpg'],
-        ['nombre' => 'Asad Zanzibar', 'marca' => 'Lattafa', 'precio' => 189, 'img' => 'asadz.jpg'],
-        ['nombre' => 'Asad Negro', 'marca' => 'Lattafa', 'precio' => 189, 'img' => 'asadn.jpg'],
-        ['nombre' => 'Ansaam Gold', 'marca' => 'Lattafa', 'precio' => 189, 'img' => 'ansamg.jpg'],
-        ['nombre' => 'Nitro Red', 'marca' => 'Dumont', 'precio' => 179, 'img' => 'nitror.jpg'],
-        ['nombre' => 'Haramain Amber Oud Aqua Dubai', 'marca' => 'Al Haramain', 'precio' => 229, 'img' => 'haramaina.jpg'],
-        ['nombre' => 'Mandarin Sky', 'marca' => 'Odyssey', 'precio' => 179, 'img' => 'mandarins.jpg'],
-        ['nombre' => 'Liquid Brun', 'marca' => 'French Avenue', 'precio' => 219, 'img' => 'liquidb.jpg'],
-        ['nombre' => 'Vulcan Feu', 'marca' => 'French Avenue', 'precio' => 239, 'img' => 'vulcanf.jpg'],
+        [
+            'id' => 1,
+            'nombre' => '9PM',
+            'marca' => 'Afnan',
+            'precio' => 179,
+            'imagenes' => ['9pm.webp', '9pm2.webp', '9pm3.webp']
+        ],
+        [
+            'id' => 2,
+            'nombre' => '9PM Rebel',
+            'marca' => 'Afnan',
+            'precio' => 179,
+            'imagenes' => ['9pmr.jpg', '9pmr-2.jpg', '9pmr-3.jpg']
+        ],
+        [
+            'id' => 3,
+            'nombre' => '9AM',
+            'marca' => 'Afnan',
+            'precio' => 179,
+            'imagenes' => ['9am.jpg', '9am-2.jpg', '9am-3.jpg']
+        ],
+        [
+            'id' => 4,
+            'nombre' => 'Khamrah Qahwa',
+            'marca' => 'Lattafa',
+            'precio' => 179,
+            'imagenes' => ['khamrahq.jpg', 'khamrahq-2.jpg', 'khamrahq-3.jpg']
+        ],
+        [
+            'id' => 5,
+            'nombre' => 'Khamrah Dukhan',
+            'marca' => 'Lattafa',
+            'precio' => 199,
+            'imagenes' => ['khamrahd.jpg', 'khamrahd-2.jpg', 'khamrahd-3.jpg']
+        ],
+        [
+            'id' => 6,
+            'nombre' => 'Khamrah',
+            'marca' => 'Lattafa',
+            'precio' => 179,
+            'imagenes' => ['khamrah.jpg', 'khamrah-2.jpg', 'khamrah-3.jpg']
+        ],
+        [
+            'id' => 7,
+            'nombre' => 'Ishq Al Shuyukh Gold',
+            'marca' => 'Lattafa',
+            'precio' => 219,
+            'imagenes' => ['ishqg.jpg', 'ishqg-2.jpg', 'ishqg-3.jpg']
+        ],
+        [
+            'id' => 8,
+            'nombre' => 'Ishq Al Shuyukh Silver',
+            'marca' => 'Lattafa',
+            'precio' => 219,
+            'imagenes' => ['ishqs.jpg', 'ishqs-2.jpg', 'ishqs-3.jpg']
+        ],
+        [
+            'id' => 9,
+            'nombre' => 'Shaheen Silver',
+            'marca' => 'Lattafa',
+            'precio' => 219,
+            'imagenes' => ['shaheens.jpg', 'shaheens-2.jpg', 'shaheens-3.jpg']
+        ],
+        [
+            'id' => 10,
+            'nombre' => 'Badee Al Oud Sublime',
+            'marca' => 'Lattafa',
+            'precio' => 179,
+            'imagenes' => ['badees.jpg', 'badees-2.jpg', 'badees-3.jpg']
+        ],
+        [
+            'id' => 11,
+            'nombre' => 'Badee Al Oud Honor & Glory',
+            'marca' => 'Lattafa',
+            'precio' => 179,
+            'imagenes' => ['badeehg.jpg', 'badeehg-2.jpg', 'badeehg-3.jpg']
+        ],
+        [
+            'id' => 12,
+            'nombre' => 'Badee Al Oud Mood Amor',
+            'marca' => 'Lattafa',
+            'precio' => 179,
+            'imagenes' => ['badeema.jpg', 'badeema-2.jpg', 'badeema-3.jpg']
+        ],
+        [
+            'id' => 13,
+            'nombre' => 'Fakhar Rose Gold',
+            'marca' => 'Lattafa',
+            'precio' => 199,
+            'imagenes' => ['fakharr.jpg', 'fakharr-2.jpg', 'fakharr-3.jpg']
+        ],
+        [
+            'id' => 14,
+            'nombre' => 'Fakhar Gold',
+            'marca' => 'Lattafa',
+            'precio' => 199,
+            'imagenes' => ['fakharg.jpg', 'fakharg-2.jpg', 'fakharg-3.jpg']
+        ],
+        [
+            'id' => 15,
+            'nombre' => 'Yara Candy',
+            'marca' => 'Lattafa',
+            'precio' => 179,
+            'imagenes' => ['yarac.jpg', 'yarac-2.jpg', 'yarac-3.jpg']
+        ],
+        [
+            'id' => 16,
+            'nombre' => 'Eclaire Pistache',
+            'marca' => 'Lattafa',
+            'precio' => 189,
+            'imagenes' => ['eclairep.jpg', 'eclairep-2.jpg', 'eclairep-3.jpg']
+        ],
+        [
+            'id' => 17,
+            'nombre' => 'Eclaire Banoffi',
+            'marca' => 'Lattafa',
+            'precio' => 189,
+            'imagenes' => ['eclaireb.jpg', 'eclaireb-2.jpg', 'eclaireb-3.jpg']
+        ],
+        [
+            'id' => 18,
+            'nombre' => 'Eclaire',
+            'marca' => 'Lattafa',
+            'precio' => 199,
+            'imagenes' => ['eclaire.jpg', 'eclaire-2.jpg', 'eclaire-3.jpg']
+        ],
+        [
+            'id' => 19,
+            'nombre' => 'Asad Bourbon',
+            'marca' => 'Lattafa',
+            'precio' => 199,
+            'imagenes' => ['asadb.jpg', 'asadb-2.jpg', 'asadb-3.jpg']
+        ],
+        [
+            'id' => 20,
+            'nombre' => 'Asad Zanzibar',
+            'marca' => 'Lattafa',
+            'precio' => 189,
+            'imagenes' => ['asadz.jpg', 'asadz-2.jpg', 'asadz-3.jpg']
+        ],
+        [
+            'id' => 21,
+            'nombre' => 'Asad Negro',
+            'marca' => 'Lattafa',
+            'precio' => 189,
+            'imagenes' => ['asadn.jpg', 'asadn-2.jpg', 'asadn-3.jpg']
+        ],
+        [
+            'id' => 22,
+            'nombre' => 'Ansaam Gold',
+            'marca' => 'Lattafa',
+            'precio' => 189,
+            'imagenes' => ['ansamg.jpg', 'ansamg-2.jpg', 'ansamg-3.jpg']
+        ],
+        [
+            'id' => 23,
+            'nombre' => 'Nitro Red',
+            'marca' => 'Dumont',
+            'precio' => 179,
+            'imagenes' => ['nitror.jpg', 'nitror-2.jpg', 'nitror-3.jpg']
+        ],
+        [
+            'id' => 24,
+            'nombre' => 'Haramain Amber Oud Aqua Dubai',
+            'marca' => 'Al Haramain',
+            'precio' => 229,
+            'imagenes' => ['haramaina.jpg', 'haramaina-2.jpg', 'haramaina-3.jpg']
+        ],
+        [
+            'id' => 25,
+            'nombre' => 'Mandarin Sky',
+            'marca' => 'Odyssey',
+            'precio' => 179,
+            'imagenes' => ['mandarins.jpg', 'mandarins-2.jpg', 'mandarins-3.jpg']
+        ],
+        [
+            'id' => 26,
+            'nombre' => 'Liquid Brun',
+            'marca' => 'French Avenue',
+            'precio' => 219,
+            'imagenes' => ['liquidb.jpg', 'liquidb-2.jpg', 'liquidb-3.jpg']
+        ],
+        [
+            'id' => 27,
+            'nombre' => 'Vulcan Feu',
+            'marca' => 'French Avenue',
+            'precio' => 239,
+            'imagenes' => ['vulcanf.jpg', 'vulcanf-2.jpg', 'vulcanf-3.jpg']
+        ],
     ];
 
     public function index(Request $request)
@@ -48,6 +211,7 @@ class CatalogoController extends Controller
 
         return view('catalogo', [
             'productos' => $this->paginate($productos, $request),
+            'productosJson' => json_encode(self::PRODUCTOS), // Para JavaScript
             'marcas' => $marcas,
             'q' => $filters['q'],
             'marcaSel' => $filters['marca'],
