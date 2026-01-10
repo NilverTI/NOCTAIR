@@ -998,3 +998,25 @@ main,
 .clear-btn:hover {
     background: rgba(255, 255, 255, 0.1);
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#inicio>div>div {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+::scroll-marker{
+    color: transparent;
+    background: transparent;
+    border: none;
+}

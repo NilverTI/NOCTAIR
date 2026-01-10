@@ -24,14 +24,14 @@ class CatalogoController extends Controller
             'nombre' => '9PM Rebel',
             'marca' => 'Afnan',
             'precio' => 179,
-            'imagenes' => ['9pmr.jpg', '9pmr-2.jpg', '9pmr-3.jpg']
+            'imagenes' => ['9pmr.webp', '9pmr2.webp', '9pmr3.webp']
         ],
         [
             'id' => 3,
             'nombre' => '9AM',
             'marca' => 'Afnan',
             'precio' => 179,
-            'imagenes' => ['9am.jpg', '9am-2.jpg', '9am-3.jpg']
+            'imagenes' => ['9am.webp', '9am2.webp', '9am3.webp']
         ],
         [
             'id' => 4,
