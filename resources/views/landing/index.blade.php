@@ -187,7 +187,7 @@
           {{-- Image Container --}}
           <div class="relative flex justify-center items-center min-h-[400px] sm:min-h-[100px]">
             <img
-              src="{{ asset('img/khamrah.png') }}"
+              src="{{ asset('img/khamrahpri.webp') }}"
               alt="Khamrah Extrait de Parfum by Lattafa"
               class="relative z-10 h-[500px] sm:h-[450px] lg:h-[580px] object-contain 
                       drop-shadow-[0_60px_120px_rgba(0,0,0,0.7)]

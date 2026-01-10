@@ -269,10 +269,17 @@ class CatalogoController extends Controller
         $page = LengthAwarePaginator::resolveCurrentPage();
         $items = $productos->values();
 
+        // Detectar móvil por User-Agent
+        $ua = $request->header('User-Agent', '');
+        $isMobile = (bool) preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $ua);
+
+        // Móvil = 6, Desktop = 9 (tu constante)
+        $perPage = $isMobile ? 6 : self::PER_PAGE;
+
         return new LengthAwarePaginator(
-            $items->forPage($page, self::PER_PAGE),
+            $items->forPage($page, $perPage),
             $items->count(),
-            self::PER_PAGE,
+            $perPage,
             $page,
             [
                 'path' => $request->url(),

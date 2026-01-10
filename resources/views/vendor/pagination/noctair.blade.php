@@ -1,3 +1,49 @@
+<script>
+// --- Swipe para carruseles (móvil) ---
+(function enableCarouselSwipe(){
+  const MIN_DISTANCE = 40; // px para considerar swipe
+  const MAX_VERTICAL = 60; // tolerancia si el usuario está scrolleando
+
+function attachSwipe(carouselEl){
+    let startX = 0, startY = 0, startTime = 0;
+
+    carouselEl.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    startTime = Date.now();
+    }, { passive: true });
+
+    carouselEl.addEventListener('touchend', (e) => {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+
+      // si fue más vertical, probablemente era scroll
+    if (Math.abs(dy) > MAX_VERTICAL) return;
+
+      // swipe horizontal suficiente
+    if (Math.abs(dx) < MIN_DISTANCE) return;
+
+    const prodId = carouselEl.getAttribute('data-carousel');
+
+    if (!prodId) return;
+
+    if (dx < 0) {
+        Carousel.next(prodId); // swipe izquierda -> siguiente
+    } else {
+        Carousel.prev(prodId); // swipe derecha -> anterior
+    }
+    }, { passive: true });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.carousel[data-carousel]').forEach(attachSwipe);
+});
+})();
+</script>
+
+
 @if ($paginator->hasPages())
     <nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-center gap-2">
         {{-- Previous Page Link --}}
