@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" href="{{ asset('img/logo-noctair.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('img/logo-noctair.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo-noctair-180.png') }}">
+
     <title>NOCTAIR | Perfumes con presencia</title>
 
     {{-- Google Font --}}

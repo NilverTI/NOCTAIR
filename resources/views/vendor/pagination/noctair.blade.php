@@ -4,7 +4,7 @@
   const MIN_DISTANCE = 40; // px para considerar swipe
   const MAX_VERTICAL = 60; // tolerancia si el usuario está scrolleando
 
-function attachSwipe(carouselEl){
+    function attachSwipe(carouselEl){
     let startX = 0, startY = 0, startTime = 0;
 
     carouselEl.addEventListener('touchstart', (e) => {
