@@ -24,11 +24,6 @@
 
     $socialLinks = [
         [
-            'url'   => 'https://facebook.com/noctair',
-            'label' => 'Facebook',
-            'path'  => 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z',
-        ],
-        [
             'url'   => 'https://www.instagram.com/noctairperfumes',
             'label' => 'Instagram',
             'path'  => 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 2h11A4.5 4.5 0 0122 6.5v11a4.5 4.5 0 01-4.5 4.5h-11A4.5 4.5 0 012 17.5v-11A4.5 4.5 0 016.5 2z',
@@ -213,7 +208,7 @@
     </aside>
 
     {{-- HERO --}}
-    <section id="inicio" class="relative pt-28 sm:pt-15 pb-20 sm:pb-32 overflow-hidden">
+    <section id="inicio" class="relative pt-28 sm:pt-32 pb-20 sm:pb-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {{-- Watermark --}}
             <div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-30">
